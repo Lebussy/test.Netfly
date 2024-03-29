@@ -17,6 +17,9 @@ public class Main {
         // params the json body and trims the braces
         String json = response.body();
         json = json.substring(1, json.length() - 2);
+        System.out.println(response.body());
+
+        System.out.println("-".repeat(20));
 
         // splits the params into a String[] and puts them in Arraylist
         String[] jsonParams = json.split(",");
@@ -24,11 +27,15 @@ public class Main {
         // removes trailing and leading ""s
         jsonList.replaceAll(s -> s.substring(1, s.length() - 2));
 
+        jsonList.forEach(System.out::println);
+        System.out.println("-".repeat(20));
         // maps the values in json to key value pairs
         Map<String, String> paramsMap = new HashMap<>();
         jsonList.forEach(s -> {
             String[] temp = s.split("\":\"");
-            paramsMap.put(temp[0], temp[1]);
+            if (temp.length > 1){
+                paramsMap.put(temp[0], temp[1]);
+            }
         });
 
         System.out.println(paramsMap.values());

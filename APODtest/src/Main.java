@@ -14,21 +14,18 @@ public class Main {
         HttpClient client = HttpClient.newBuilder().build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        // params the json body and trims the braces
+
+        // params the json body and trims the braces and first and last ""s
         String json = response.body();
-        json = json.substring(1, json.length() - 2);
-        System.out.println(response.body());
+        json = json.substring(2, json.length() - 3);
 
-        System.out.println("-".repeat(20));
 
-        // splits the params into a String[] and puts them in Arraylist
-        String[] jsonParams = json.split(",");
+
+        // splits the params into a String[] by "," and puts them in array list
+        String[] jsonParams = json.split("\",\"");
         List<String> jsonList = new ArrayList<>(List.of(jsonParams));
-        // removes trailing and leading ""s
-        jsonList.replaceAll(s -> s.substring(1, s.length() - 2));
 
-        jsonList.forEach(System.out::println);
-        System.out.println("-".repeat(20));
+
         // maps the values in json to key value pairs
         Map<String, String> paramsMap = new HashMap<>();
         jsonList.forEach(s -> {

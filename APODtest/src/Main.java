@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder(URI.create("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=1999-08-28")).GET().build();
+        HttpRequest request = HttpRequest.newBuilder(URI.create("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")).GET().build();
         HttpClient client = HttpClient.newBuilder().build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
@@ -33,6 +33,10 @@ public class Main {
                 paramsMap.put(temp[0], temp[1]);
             }
         });
+
+        System.out.println(paramsMap.keySet());
+
+        
 
 
 

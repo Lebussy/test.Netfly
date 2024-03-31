@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Button</title>
+</head>
+<body>
+    <form id="dateForm">
+        <input type="date" id="dateInput">
+        <button type="button" id="submitButton">Take me to that APOD!!</button>
+    </form>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            // Get the value of the date input
+            var selectedDate = document.getElementById('dateInput').value;
+            console.log(selectedDate);
+            
+            // Construct the URL with the selected date
+            //var url = 'https://example.com/' + selectedDate;
+            
+            // Redirect the user to the URL
+           // window.location.href = url;
+        });
+    </script>
+</body>
+</html>
